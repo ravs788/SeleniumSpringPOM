@@ -19,7 +19,13 @@ public class ScreenshotUtils {
      * @param driver WebDriver instance
      * @param fileNameHint A hint string to include in the file name (test or context)
      */
-    public static void captureScreenshot(WebDriver driver, String fileNameHint) {
+    /**
+     * Captures a screenshot and saves it to the screenshots directory.
+     * @param driver WebDriver instance
+     * @param fileNameHint A hint string to include in the file name (test or context)
+     * @return Absolute path to the saved screenshot file, or null on failure.
+     */
+    public static String captureScreenshot(WebDriver driver, String fileNameHint) {
         if (driver instanceof TakesScreenshot) {
             try {
                 File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -28,9 +34,11 @@ public class ScreenshotUtils {
                 String fileName = String.format("%s/%s_%d.png", screenshotDir, fileNameHint, System.currentTimeMillis());
                 Files.copy(screenshot.toPath(), Paths.get(fileName));
                 System.out.println("Screenshot captured: " + fileName);
+                return new File(fileName).getAbsolutePath();
             } catch (IOException ex) {
                 System.err.println("Failed to capture screenshot: " + ex.getMessage());
             }
         }
+        return null;
     }
 }
