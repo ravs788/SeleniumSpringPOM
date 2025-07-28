@@ -34,3 +34,4 @@ build/
 .mvn/
 .oca/
 .allure/
+screenshots/

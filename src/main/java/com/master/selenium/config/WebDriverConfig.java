@@ -22,6 +22,10 @@ public class WebDriverConfig {
 
     @Bean
     public WebDriver webDriver() {
+        return createDriver(browser, headless);
+    }
+
+    public static WebDriver createDriver(String browser, boolean headless) {
         WebDriver driver;
         switch (browser.toLowerCase()) {
             case "firefox":
@@ -48,7 +52,6 @@ public class WebDriverConfig {
                 driver = new ChromeDriver(chromeOptions);
                 break;
         }
-        // Maximize browser window upon creation
         driver.manage().window().maximize();
         return driver;
     }

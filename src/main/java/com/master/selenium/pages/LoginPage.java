@@ -21,6 +21,10 @@ public class LoginPage extends BasePage {
     @FindBy(id = "login-button")
     private WebElement loginButton;
 
+    // Error message, typical for SauceDemo (adjust selector as needed)
+    @FindBy(css = "[data-test='error']")
+    private WebElement errorMessage;
+
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -31,4 +35,12 @@ public class LoginPage extends BasePage {
         ClickElement(loginButton);
     }
 
+    /** Returns the login error message text, or an empty string if not present. */
+    public String getLoginErrorMessage() {
+        try {
+            return errorMessage.isDisplayed() ? errorMessage.getText() : "";
+        } catch (Exception e) {
+            return "";
+        }
+    }
 }
