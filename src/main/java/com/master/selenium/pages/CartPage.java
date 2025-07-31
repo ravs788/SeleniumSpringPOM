@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 import org.springframework.stereotype.Component;
+import com.master.selenium.utils.ElementUtils;
 
 @Component
 public class CartPage extends BasePage {
@@ -33,7 +34,7 @@ public class CartPage extends BasePage {
     }
 
     public void clickCheckout() {
-        ClickElement(checkoutButton);
+        ElementUtils.clickElement(driver, checkoutButton);
     }
 
     public int getCartSize() {

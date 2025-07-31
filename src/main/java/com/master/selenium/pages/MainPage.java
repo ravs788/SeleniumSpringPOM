@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.stereotype.Component;
+import com.master.selenium.utils.ElementUtils;
 
 @Component
 public class MainPage extends BasePage{
@@ -64,7 +65,7 @@ public class MainPage extends BasePage{
     /** Adds product to cart by its index in the inventory list */
     public void addProductToCartByIndex(int index) {
         if (addToCartButtons != null && index >= 0 && index < addToCartButtons.size()) {
-            ClickElement(addToCartButtons.get(index));
+            ElementUtils.clickElement(driver, addToCartButtons.get(index));
         } else {
             throw new IllegalArgumentException("Invalid product index for Add to Cart button: " + index);
         }
@@ -76,7 +77,7 @@ public class MainPage extends BasePage{
             WebElement item = inventoryItems.get(i);
             WebElement titleElem = item.findElement(By.className("inventory_item_name"));
             if (titleElem.getText().trim().equalsIgnoreCase(name.trim())) {
-                ClickElement(addToCartButtons.get(i));
+                ElementUtils.clickElement(driver, addToCartButtons.get(i));
                 return;
             }
         }
@@ -90,12 +91,12 @@ public class MainPage extends BasePage{
 
     /** Opens the cart page by clicking the cart icon */
     public void openCart() {
-        ClickElement(cartIcon);
+        ElementUtils.clickElement(driver, cartIcon);
     }
 
     /** Opens the menu (burger) */
     public void clickMenu() {
-        ClickElement(burgerMenuButton);
+        ElementUtils.clickElement(driver, burgerMenuButton);
     }
 
     /** Selects a sort/filter option by visible text */
