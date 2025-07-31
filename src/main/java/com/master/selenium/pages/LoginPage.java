@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.springframework.stereotype.Component;
+import com.master.selenium.utils.ElementUtils;
 
 /**
  * Page Object for SauceDemo Login Page.
@@ -30,9 +31,9 @@ public class LoginPage extends BasePage {
     }
 
     public void login(String username, String password) {
-        SetTextBox(usernameInput, username);
-        SetTextBox(passwordInput, password);
-        ClickElement(loginButton);
+        ElementUtils.setTextBox(driver, usernameInput, username);
+        ElementUtils.setTextBox(driver, passwordInput, password);
+        ElementUtils.clickElement(driver, loginButton);
     }
 
     /** Returns the login error message text, or an empty string if not present. */

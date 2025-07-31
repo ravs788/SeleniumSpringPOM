@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.springframework.stereotype.Component;
+import com.master.selenium.utils.ElementUtils;
 
 @Component
 public class CheckoutPage extends BasePage {
@@ -29,23 +30,23 @@ public class CheckoutPage extends BasePage {
     }
 
     public void enterFirstName(String firstName) {
-        SetTextBox(firstNameInput, firstName);
+        ElementUtils.setTextBox(driver, firstNameInput, firstName);
     }
 
     public void enterLastName(String lastName) {
-        SetTextBox(lastNameInput, lastName);
+        ElementUtils.setTextBox(driver, lastNameInput, lastName);
     }
 
     public void enterPostalCode(String postalCode) {
-        SetTextBox(postalCodeInput, postalCode);
+        ElementUtils.setTextBox(driver, postalCodeInput, postalCode);
     }
 
     public void clickContinue() {
-        ClickElement(continueButton);
+        ElementUtils.clickElement(driver, continueButton);
     }
 
     public void clickCancel() {
-        ClickElement(cancelButton);
+        ElementUtils.clickElement(driver, cancelButton);
     }
 
     public void fillCheckoutForm(String first, String last, String postal) {

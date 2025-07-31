@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 import org.springframework.stereotype.Component;
+import com.master.selenium.utils.ElementUtils;
 
 @Component
 public class CheckoutOverviewPage extends BasePage {
@@ -50,10 +51,10 @@ public class CheckoutOverviewPage extends BasePage {
     }
 
     public void clickFinish() {
-        ClickElement(finishButton);
+        ElementUtils.clickElement(driver, finishButton);
     }
 
     public void clickCancel() {
-        ClickElement(cancelButton);
+        ElementUtils.clickElement(driver, cancelButton);
     }
 }

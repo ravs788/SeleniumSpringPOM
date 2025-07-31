@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.springframework.stereotype.Component;
+import com.master.selenium.utils.ElementUtils;
 
 @Component
 public class CheckoutCompletePage extends BasePage {
@@ -24,6 +25,6 @@ public class CheckoutCompletePage extends BasePage {
     }
 
     public void clickBackHome() {
-        ClickElement(backHomeButton);
+        ElementUtils.clickElement(driver, backHomeButton);
     }
 }
